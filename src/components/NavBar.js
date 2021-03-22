@@ -6,43 +6,31 @@ const NavBar = () => {
   const location = useLocation();
 
   return (
-    <nav class="navbar navbar-light bg-light">
-      <div class="container-fluid">
-      <Link
-            to="/"
-            className="navbar-brand"
-          >
-            <img
+    <nav className="navbar navbar-expand py-3 navbar-dark bg-dark shadow-sm">
+      <div className="container">
+        <Link to="/" className="navbar-brand">
+          <img
             src={logo}
+            width="45"
             alt=""
-            width="75"
-            height="75"
-            class="d-inline-block align-top"
+            className="d-inline-block align-middle mr-2"
           />
-          </Link>
+        </Link>
+        <div id="navbarSupportedContent" className="collapse navbar-collapse">
+          <ul className="navbar-nav ml-auto">
+            <li className={location.pathname === "/" ? "nav-link active" : "nav-link"}>
+              <Link to="/" className="nav-link">
+                Home <span className="sr-only">(current)</span>
+              </Link>
+            </li>
+            <li className={location.pathname === "/employees" ? "nav-link active" : "nav-link"}>
+              <Link to="/employees" className="nav-link">
+                Employees
+              </Link>
+            </li>
+          </ul>
+        </div>
       </div>
-      <ul className="nav nav-tabs">
-        <li className="nav-item">
-          <Link
-            to="/"
-            className={
-              location.pathname === "/" ? "nav-link active" : "nav-link"
-            }
-          >
-            Home
-          </Link>
-        </li>
-        <li className="nav-item">
-          <Link
-            to="/discover"
-            className={
-              location.pathname === "/employees" ? "nav-link active" : "nav-link"
-            }
-          >
-            Employees
-          </Link>
-        </li>
-      </ul>
     </nav>
   );
 };

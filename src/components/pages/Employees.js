@@ -32,14 +32,21 @@ class Employees extends React.Component{
   }
 
   filterEmployees = (column, value) => {
-    const filteredEmployees = this.state.employees.filter(employee => employee[column] === value);
+    
+
+    const filteredEmployees = this.state.employees.filter(employee => {
+      if (column === 'country'){
+        return employee.location.country === value
+      }
+
+      return employee[column] === value
+    });
     this.setState({displayedEmployees: filteredEmployees})
   }
 
   searchHandler = event => {
     event.preventDefault();
-    console.log(this.state.searchTerm);
-    console.log(this.state.category);
+    this.filterEmployees(this.state.category, this.state.searchTerm)
 
   }
 

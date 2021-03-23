@@ -20,6 +20,11 @@ class Employees extends React.Component{
     })
   }
 
+  filterEmployees = (column, value) => {
+    const filteredEmployees = this.state.employees.filter(employee => employee[column] === value);
+    this.setState({displayedEmployees: filteredEmployees})
+  }
+
   render(){
     return(
       <div>

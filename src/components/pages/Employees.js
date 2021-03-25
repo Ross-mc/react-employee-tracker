@@ -19,14 +19,13 @@ class Employees extends React.Component {
     API.getEmployees().then((res) => {
       const employees = res.data.results;
       const employeesWithNonZeroIndex = employees.map((employee, index) => {
-        employee.index = index+1;
-        return employee
-      })
+        employee.index = index + 1;
+        return employee;
+      });
       this.setState({
         employees: employeesWithNonZeroIndex,
-        displayedEmployees: employeesWithNonZeroIndex
+        displayedEmployees: employeesWithNonZeroIndex,
       });
-      this.sortEmployeesBy("country");
     });
   };
 
@@ -63,13 +62,17 @@ class Employees extends React.Component {
       sortedEmployees = this.state.employees.sort((personA, personB) => {
         const personAFullName = `${personA.name.first} ${personA.name.last}`;
         const personBFullName = `${personB.name.first} ${personB.name.last}`;
-        return personAFullName.localeCompare(personBFullName);
+        return order === "asc"
+          ? personAFullName.localeCompare(personBFullName)
+          : personBFullName.localeCompare(personAFullName);
       });
     } else {
       sortedEmployees = this.state.employees.sort((personA, personB) => {
         const employeeALocation = personA.location[column];
         const employeeBLocation = personB.location[column];
-        return employeeALocation.localeCompare(employeeBLocation);
+        return order === "asc"
+          ? employeeALocation.localeCompare(employeeBLocation)
+          : employeeBLocation.localeCompare(employeeALocation);
       });
     }
     this.setState({ displayedEmployees: sortedEmployees });

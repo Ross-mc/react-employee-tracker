@@ -1,9 +1,9 @@
 import React from "react"
 
-const EmployeeRow = ({employee, index}) => {
+const EmployeeRow = ({employee}) => {
   return (
     <tr>
-      <th scope="row">{index}</th>
+      <th scope="row">{employee.index}</th>
       <td>{employee.name.first} {employee.name.last}</td>
       <td>{employee.cell}</td>
       <td>{employee.email}</td>

@@ -6,7 +6,7 @@ const EmployeeTable = ({employees}) => {
     <table className="table">
       <thead>
         <tr>
-          <th scope="col">#</th>
+          <th scope="col">ID</th>
           <th scope="col">Name</th>
           <th scope="col">Phone</th>
           <th scope="col">Email</th>
@@ -15,7 +15,7 @@ const EmployeeTable = ({employees}) => {
         </tr>
       </thead>
       <tbody>
-        {employees.map((employee, index) => <EmployeeRow employee={employee} index={index+1} key={index}/>)}
+        {employees.map((employee) => <EmployeeRow employee={employee} key={employee.index}/>)}
       </tbody>
     </table>
   )

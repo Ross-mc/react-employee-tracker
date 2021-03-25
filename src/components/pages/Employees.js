@@ -17,10 +17,14 @@ class Employees extends React.Component {
 
   getEmployees = () => {
     API.getEmployees().then((res) => {
-      console.log(res.data.results);
+      const employees = res.data.results;
+      const employeesWithNonZeroIndex = employees.map((employee, index) => {
+        employee.index = index+1;
+        return employee
+      })
       this.setState({
-        employees: res.data.results,
-        displayedEmployees: res.data.results,
+        employees: employeesWithNonZeroIndex,
+        displayedEmployees: employeesWithNonZeroIndex
       });
       this.sortEmployeesBy("country");
     });
@@ -53,7 +57,7 @@ class Employees extends React.Component {
     this.setState({ displayedEmployees: filteredEmployees });
   };
 
-  sortEmployeesBy = (column) => {
+  sortEmployeesBy = (column, order) => {
     let sortedEmployees = [];
     if (column === "name") {
       sortedEmployees = this.state.employees.sort((personA, personB) => {

@@ -59,7 +59,7 @@ class Employees extends React.Component {
       sortedEmployees = this.state.employees.sort((personA, personB) => {
         const personAFullName = `${personA.name.first} ${personA.name.last}`;
         const personBFullName = `${personB.name.first} ${personB.name.last}`;
-        return personBFullName.localeCompare(personAFullName);
+        return personAFullName.localeCompare(personBFullName);
       });
     } else {
       sortedEmployees = this.state.employees.sort((personA, personB) => {

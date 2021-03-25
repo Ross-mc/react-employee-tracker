@@ -22,7 +22,7 @@ class Employees extends React.Component {
         employees: res.data.results,
         displayedEmployees: res.data.results,
       });
-      this.sortEmployeesBy("name");
+      this.sortEmployeesBy("country");
     });
   };
 
@@ -65,7 +65,7 @@ class Employees extends React.Component {
       sortedEmployees = this.state.employees.sort((personA, personB) => {
         const employeeALocation = personA.location[column];
         const employeeBLocation = personB.location[column];
-        return employeeBLocation.localeCompare(employeeALocation);
+        return employeeALocation.localeCompare(employeeBLocation);
       });
     }
     this.setState({ displayedEmployees: sortedEmployees });

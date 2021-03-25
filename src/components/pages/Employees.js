@@ -22,6 +22,7 @@ class Employees extends React.Component {
         employees: res.data.results,
         displayedEmployees: res.data.results,
       });
+      this.sortEmployeesBy("name");
     });
   };
 
@@ -50,6 +51,24 @@ class Employees extends React.Component {
     }
 
     this.setState({ displayedEmployees: filteredEmployees });
+  };
+
+  sortEmployeesBy = (column) => {
+    let sortedEmployees = [];
+    if (column === "name") {
+      sortedEmployees = this.state.employees.sort((personA, personB) => {
+        const personAFullName = `${personA.name.first} ${personA.name.last}`;
+        const personBFullName = `${personB.name.first} ${personB.name.last}`;
+        return personBFullName.localeCompare(personAFullName);
+      });
+    } else {
+      sortedEmployees = this.state.employees.sort((personA, personB) => {
+        const employeeALocation = personA.location[column];
+        const employeeBLocation = personB.location[column];
+        return employeeBLocation.localeCompare(employeeALocation);
+      });
+    }
+    this.setState({ displayedEmployees: sortedEmployees });
   };
 
   searchHandler = (event) => {

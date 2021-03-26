@@ -83,6 +83,11 @@ class Employees extends React.Component {
     this.filterEmployees(this.state.category, this.state.searchTerm);
   };
 
+  resetEmployees = (event) => {
+    event.preventDefault();
+    this.setState({displayedEmployees: this.state.employees})
+  }
+
   render() {
     return (
       <div>
@@ -90,6 +95,7 @@ class Employees extends React.Component {
         <SearchForm
           searchHandler={this.searchHandler}
           onChangeHandler={this.onChangeHandler}
+          resetHandler={this.resetEmployees}
         />
         <div>
           {this.state.displayedEmployees.length === 0 ? (

@@ -64,8 +64,8 @@ const SearchForm = ({ searchHandler, onChangeHandler, resetHandler }) => {
         <button type="submit" className="btn btn-primary">
           Submit Search
         </button>
-        <button type="btn" className="btn btn-warning" onClick={resetHandler}>
-          Submit Search
+        <button type="btn" className="btn btn-warning" onClick={resetHandler} style={{marginLeft: "15px"}}>
+          Reset Employees
         </button>
       </div>
     </form>

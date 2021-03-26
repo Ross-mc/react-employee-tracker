@@ -1,6 +1,6 @@
 import React from "react";
 
-const SearchForm = ({ searchHandler, onChangeHandler }) => {
+const SearchForm = ({ searchHandler, onChangeHandler, resetHandler }) => {
   return (
     <form onSubmit={searchHandler} style={{ width: "60%", margin: "0 auto" }}>
       <div className="form-group">
@@ -62,6 +62,9 @@ const SearchForm = ({ searchHandler, onChangeHandler }) => {
       </div>
       <div className="form-group text-center">
         <button type="submit" className="btn btn-primary">
+          Submit Search
+        </button>
+        <button type="btn" className="btn btn-warning" onClick={resetHandler}>
           Submit Search
         </button>
       </div>

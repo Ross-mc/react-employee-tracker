@@ -116,7 +116,7 @@ class Employees extends React.Component {
   render() {
     return (
       <div>
-        <h1>Search all Dinoco Employees</h1>
+        <h1 style={{margin: "25px"}}>Search all Dinoco Employees</h1>
         <SearchForm
           searchHandler={this.searchHandler}
           onChangeHandler={this.onChangeHandler}

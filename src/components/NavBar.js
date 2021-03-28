@@ -25,7 +25,7 @@ const NavBar = () => {
             </li>
             <li className={location.pathname === "/employees" ? "nav-link active" : "nav-link"}>
               <Link to="/employees" className="nav-link">
-                Employees
+                Employee Directory
               </Link>
             </li>
           </ul>

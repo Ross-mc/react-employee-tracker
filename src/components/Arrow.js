@@ -1,9 +1,12 @@
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const Arrow = ({direction, arrowClickHandler}) => {
-    return (
-        <i className={direction === "straight" ? "fas fa-grip-lines" : `fas fa-angle-${direction}`} onClick={arrowClickHandler}></i>
-    )
-}
+const Arrow = ({ icon, arrowClickHandler }) => {
+  return (
+    <button onClick={arrowClickHandler} style={{background: "none", border: "none", width: "15px", height: "15px"}}>
+      <FontAwesomeIcon icon={icon} />
+    </button>
+  );
+};
 
-export default Arrow
+export default Arrow;

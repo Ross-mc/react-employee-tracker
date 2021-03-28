@@ -1,14 +1,15 @@
 import React from "react";
 import EmployeeRow from "./EmployeeRow"
 import Arrow from "./Arrow"
+import icons from "../icons"
 
 const EmployeeTable = ({employees}) => {
   return (
     <table className="table">
       <thead>
         <tr>
-          <th scope="col">ID <Arrow direction={'straight'} arrowClickHandler={() => console.log('arrow clicked')}/></th>
-          <th scope="col">Name</th>
+          <th scope="col">ID <Arrow icon={icons.down} arrowClickHandler={() => console.log('arrow clicked')}/></th>
+          <th scope="col">Name <Arrow icon={icons.up} arrowClickHandler={() => console.log('arrow clicked')}/></th>
           <th scope="col">Phone</th>
           <th scope="col">Email</th>
           <th scope="col">Location</th>

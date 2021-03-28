@@ -9,6 +9,8 @@ class Employees extends React.Component {
     displayedEmployees: [],
     category: "",
     searchTerm: "",
+    idDirection: "down",
+    nameDirection: "straight"
   };
 
   componentDidMount() {
@@ -59,20 +61,18 @@ class Employees extends React.Component {
   sortEmployeesBy = (column, order) => {
     let sortedEmployees = [];
     if (column === "name") {
-      sortedEmployees = this.state.employees.sort((personA, personB) => {
+      sortedEmployees = this.state.displayedEmployees.sort((personA, personB) => {
         const personAFullName = `${personA.name.first} ${personA.name.last}`;
         const personBFullName = `${personB.name.first} ${personB.name.last}`;
-        return order === "asc"
+        return order === "down"
           ? personAFullName.localeCompare(personBFullName)
           : personBFullName.localeCompare(personAFullName);
       });
     } else {
-      sortedEmployees = this.state.employees.sort((personA, personB) => {
-        const employeeALocation = personA.location[column];
-        const employeeBLocation = personB.location[column];
-        return order === "asc"
-          ? employeeALocation.localeCompare(employeeBLocation)
-          : employeeBLocation.localeCompare(employeeALocation);
+      sortedEmployees = this.state.displayedEmployees.sort((personA, personB) => {
+        return order === "down"
+        ? personA.index - personB.index
+        : personB.index - personA.index
       });
     }
     this.setState({ displayedEmployees: sortedEmployees });
@@ -88,6 +88,31 @@ class Employees extends React.Component {
     this.setState({displayedEmployees: this.state.employees})
   }
 
+  arrowClickHandler = (column, direction) => {
+    if (direction === 'down'){
+      this.sortEmployeesBy(column, 'up')
+    } else {
+      this.sortEmployeesBy(column, 'down')
+    }
+    if (column === 'name'){
+      this.setState({idDirection: 'straight'})
+      if (direction==='down'){
+        this.setState({nameDirection: "up"})
+        
+      } else {
+        this.setState({nameDirection: "down"})
+      }
+    } else {
+      this.setState({nameDirection: 'straight'})
+      if (direction==='down'){
+        this.setState({idDirection: "up"})
+        
+      } else {
+        this.setState({idDirection: "down"})
+      }
+    }
+  }
+
   render() {
     return (
       <div>
@@ -101,7 +126,11 @@ class Employees extends React.Component {
           {this.state.displayedEmployees.length === 0 ? (
             "No Employees Found. This may be a problem with our API or your search parameters"
           ) : (
-            <EmployeeTable employees={this.state.displayedEmployees} />
+            <EmployeeTable 
+            employees={this.state.displayedEmployees} 
+            arrowClickHandler={this.arrowClickHandler} 
+            nameDirection={this.state.nameDirection} 
+            idDirection={this.state.idDirection}/>
           )}
         </div>
       </div>

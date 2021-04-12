@@ -40,6 +40,9 @@ class Employees extends React.Component {
   };
 
   filterEmployees = (column, value) => {
+    if (!value || !column){
+      return; 
+    }
     const lowerCaseValue = value.toLowerCase().trim();
     let filteredEmployees = [];
     //name comes from first and last property of name object, so we use template to get the full value.

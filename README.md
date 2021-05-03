@@ -23,7 +23,7 @@ This application has been designed and developed by [Ross McIntyre](https://gith
 
 ## Deployment
 
-Dinoco Employee Tracker is available [here](https://dinoco-employee-directory.herokuapp.com/employees).
+Dinoco Employee Tracker is available [here](https://employee-directory-dinoco.netlify.app/).
 
 ![Screenshot](https://user-images.githubusercontent.com/67362834/112750731-2f01b300-8fc2-11eb-9bb4-fb8758c54750.JPG)
 
